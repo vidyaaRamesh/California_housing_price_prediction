@@ -1,15 +1,16 @@
 import streamlit as st
 import numpy as np
 import pickle
-import gzip
+import zipfile
 
 # -------------------------
 # Load the Best Model
 # -------------------------
 @st.cache_resource
 def load_model():
-    with gzip.open('best_regressor_model.pkl.zip', 'rb') as f:
-        model = pickle.load(f)
+    with zipfile.ZipFile('best_regressor_model.pkl.zip', 'r') as zip_ref:
+        with zip_ref.open('best_regressor_model.pkl') as f:
+            model = pickle.load(f)
     return model
 
 model = load_model()
