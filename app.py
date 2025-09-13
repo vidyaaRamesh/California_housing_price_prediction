@@ -8,7 +8,7 @@ import gzip
 # -------------------------
 @st.cache_resource
 def load_model():
-    with gzip.open('best_regression_model.pkl.gz', 'rb') as f:
+    with gzip.open('best_regression_model.pkl.zip', 'rb') as f:
         model = pickle.load(f)
     return model
 
